@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html>
+<title>
+	Web App for Smart Contract
+</title>
+
+<head>
+	<meta charset="utf-8">
+</head>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<body>
+	<div class="container">
+		<h1> Interact with the Smart contract</h1>
+
+		<h2> Set a string of character	</h2>
+		<input type= "text" id="setstring">
+		<input type= "button" value="set the string"  onclick = "setstring()">
+
+		<div id= "getstring"></div>
+
+		<h2> Increase or decrease a counter </h2>
+		<p id="counter"> counter </p>
+		<input type= "button" value="increase"  onclick="increase()">
+		<input type= "button" value="decrease"  onclick="decrease()">	
+
+
+		<h5> if you want to refresh</h5>
+		<input type="button" value="refreshstring" onclick="refreshstring()">
+		<input type="button" value="refreshcounter" onclick="refreshcounter()">
+	</div>
+
+<script >
+
+	function setstring(){
+		$.get('', {setstring :$('#setstring').val()}, function(data){
+			alert("String modified in the Blockchain");
+		});
+	}
+
+	function increase(){
+		$.get('', {increase : ' '  }, function(data){
+			alert("Counter increased in the Blockchain");
+		});
+	}
+
+	function decrease(){
+		$.get('', {decrease : ' '  }, function(data){
+			alert("Counter decreased in the Blockchain");
+		});
+	}
+
+	function refreshstring(){
+		$.get('', {refreshstring : ' '}, function(data){
+			$('#getstring').html(data.getstring);
+		}, 'json');
+	}
+
+	function refreshcounter(){
+		$.get('', {refreshcounter : ' '}, function(data){
+			$('#counter').html(data.display);
+		}, 'json');
+	}
+
+	
+</script>		
+
+
+</body>
+</html>
